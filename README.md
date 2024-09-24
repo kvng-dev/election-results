@@ -66,7 +66,7 @@ API Endpoints
                 "pollingUnitId": "1",
                 "name": "Party A",
                 "score": 150,
-                "entered_by_name": "User A",
+                "entered_by_user": "User A",
                 "user_ip_address": "192.168.1.101"
             }
         ]
@@ -99,7 +99,7 @@ vbnet
 
 
 ### Instructions to Use the README:
-1. **Update Repository URL**: Replace `https://github.com/yourusername/election-results.git` with your actual repository link.
+1. **Update Repository URL**: Replace `https://github.com/kvng-dev/election-results.git` with your actual repository link.
 2. **Adjust Database Setup Instructions**: Modify the database setup instructions as needed based on your project's specific requirements.
 3. **Add More Details**: Feel free to add more information, like additional API endpoints or specific instructions for deployment.
 
