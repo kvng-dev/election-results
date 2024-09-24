@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Polling Unit Results</title>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        margin: 20px;
+        background: #feb602;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+        text-align: left;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid #dddddd;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        color: #333;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      tr:hover {
+        background-color: #e0e0e0;
+      }
+
+      input {
+        padding: 10px 20px;
+        width: 200px;
+      }
+
+      input::placeholder {
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 20px 0;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      .back-home {
+        display: inline-block;
+        position: absolute;
+        right: 10px;
+        top: 0;
+        padding: 10px 20px;
+        margin: 20px 0;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .poll {
+        display: flex;
+        /* justify-content: center; */
+        gap: 20px;
+      }
+
+      .back-home:hover,
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="poll">
+      <h1>Polling Unit Results</h1>
+      <img src="/usa.png" alt="" />
+    </div>
+    <input type="text" id="pollingUnitId" placeholder="Enter Polling Unit ID" />
+    <button onclick="fetchPollingUnitResults()">Get Results</button>
+    <div id="results"></div>
+
+    <a href="index.html" class="back-home">Back to Homepage</a>
+
+    <script>
+      async function fetchPollingUnitResults() {
+        const id = document.getElementById("pollingUnitId").value;
+        const resultsDiv = document.getElementById("results");
+
+        if (id == "") {
+          resultsDiv.innerHTML = `<p>Please enter a valid polling unit id</p>`;
+        }
+        console.log(id);
+
+        const response = await fetch(`/api/polling-unit/${id}`);
+        const results = await response.json();
+
+        if (results.length === 0) {
+          resultsDiv.innerHTML = `<p>No polling unit exists with ID: ${id}</p>`;
+        } else {
+          resultsDiv.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+           
+              <th>Polling Unit Name</th>
+              <th>Party Abbreviation</th>
+              <th>Party Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${results
+              .map(
+                (r) => `
+                <tr>
+                  
+                  <td>${r.polling_unit_name}</td>
+                  <td>${r.party_abbreviation}</td>
+                  <td>${r.party_score}</td>
+                </tr>`
+              )
+              .join("")}
+          </tbody>
+        </table>
+      `;
+        }
+      }
+    </script>
+  </body>
+</html>

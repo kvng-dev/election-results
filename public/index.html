@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Election Results</title>
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      margin: 300px auto;
+      /* display: flex; */
+      width: 100vw;
+      height: 100vh;
+      background: #feb602;
+    }
+    h1 {
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      gap: 10px;
+    }
+    a {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 20px 0;
+      background-color: #007bff; /* Bootstrap primary color */
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: #0056b3; /* Darker shade for hover effect */
+    }
+  </style>
+  <body>
+    <div>
+      <h1 style="font-family: 'Inter', sans-serif">
+        Welcome to the Election <br />
+        Results Dashboard <span><img src="/elections.png" alt="" /></span>
+      </h1>
+
+      <nav>
+        <a href="polling-unit.html">View Polling Unit Results</a>
+        <a href="lga-results.html">View LGA Results</a>
+        <a href="add-results.html">Add New Polling Unit Results</a>
+      </nav>
+    </div>
+  </body>
+</html>
