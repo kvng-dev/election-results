@@ -28,14 +28,16 @@ This project provides an API for managing polling unit results. It allows users 
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/yourusername/election-results.git
-   cd polling-unit-results
+   cd election-results
    ```
 
 Install dependencies:
 
 bash
 
+```
 npm install
+```
 
 Set up your database:
 
@@ -60,7 +62,8 @@ API Endpoints
 
     json
 
-    {
+  ```
+{
         "results": [
             {
                 "pollingUnitId": "1",
@@ -71,6 +74,8 @@ API Endpoints
             }
         ]
     }
+
+```
 
 2. Get LGA Results
 
